@@ -1,0 +1,23 @@
+.search-container{
+    margin:0;
+    background-color: #f8f8f9;
+    border-color: #dbdde2;
+    border-width: 0.5px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+}
+.menu-item{
+    margin: 20px 15px;
+}
+.btn{
+    background-color: #76618b;
+}
+.question-container{
+    margin: 30px;
+}
+.list{
+    padding: 0;
+}
+.display{
+    padding: 0;
+}

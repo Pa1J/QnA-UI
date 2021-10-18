@@ -1,0 +1,13 @@
+.user-tray{
+    color:#d7d1de;
+    background-color: #76618b;
+    display: flex;
+    flex-direction: row-reverse;
+}
+.details{
+    text-align: center;
+    margin: 20px 20px;
+}
+.content{
+    margin: 0;
+}

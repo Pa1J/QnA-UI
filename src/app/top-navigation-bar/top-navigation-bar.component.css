@@ -1,0 +1,9 @@
+.top-nav{
+    margin: 0;
+}
+.selected{
+    font-weight: bold;
+}
+.nav{
+    margin: 10px 30px;
+}
