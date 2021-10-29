@@ -1,0 +1,24 @@
+<div class="details-container">
+    <div class="row content">
+        <p class="details">{{date | date:'d MMM y'}}<p>
+        <p class="details"><i class="bi bi-brightness-high"></i></p>
+        <p class="details">{{LoggedUser}}</p>
+        <img src="/assets/img/profile.png" class="profile-pic"/>
+    </div>
+</div>
+
+<div class="nav-container">
+        <div class="row top-nav" *ngIf="NavMenuItems">
+            <div class="nav-items" *ngFor="let navMenu of NavMenuItems">
+                <div class="nav" [class.selected]="navMenu.IsActiveMenu" (click)="navSelect(navMenu.Id)" [routerLink]="['/forum',navMenu.Name.toLowerCase()]">
+                    <div class="nav-details">
+                        <div class="nav-name">
+                            {{navMenu.Name}}
+                        </div>
+                        <div *ngIf="navMenu.IsActiveMenu" class="menu-active-container">
+                            <i class="bi bi-triangle-fill menu-active"></i>
+                        </div>
+                </div>
+            </div>
+        </div>
+</div>

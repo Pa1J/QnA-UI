@@ -1,0 +1,97 @@
+<div class="home">
+    <div class="row search-container">
+        <div class="col-3 menu-item">
+            <div>Keywords</div>
+            <input class="form-control textbox" type=text/>
+        </div>
+        <div class="col-2 menu-item">
+            <div>Categories</div>
+            <select class="form-control textbox">
+                <option>List of repeated contents</option>
+            </select> 
+        </div>
+        <div class="col-2 menu-item">
+            <div>Show</div>
+            <select class="form-control textbox">
+                <option>List of repeated contents</option>
+            </select> 
+        </div>
+        <div class="col-2 menu-item">
+            <div>Sort by</div>
+            <select class="form-control textbox">
+                <option>List of repeated contents</option>
+            </select> 
+        </div>
+        <div class="col-1 menu-item reset">
+            Reset
+        </div>
+        <div class="col-1 menu-item btn-menu">
+            <p class="btn btn-secondary btn-add">
+                +Question
+            </p>
+        </div>
+   </div>
+    <div *ngIf="Questions">
+        <div *ngIf="Questions.length==0">
+            <div class="container no-val-found">
+                No questions to display. <span class="link" [routerLink]="['/forum/home/add']">Click here to add new question</span>
+            </div>
+        </div>
+        <div *ngIf="Questions.length>0">
+            <div class="row question-container">
+                <div class="col-7 list">  
+                    <div *ngFor="let question of Questions">
+                        <div class="card question-card" [class.selected]="question.Id == this.id" [routerLink]="['/forum/home',question.Id]">
+                                <div *ngIf="question.IsResolved" class="resolved"></div>
+                                <div *ngIf="!question.IsResolved" class="unresolved"></div>
+                                <div class="row question-cell">
+                                <div class="col-1">
+                                    <img class="user-propic" src="/assets/img/user-{{question.QuestionedBy}}.png">
+                                    <i class="bi bi-chevron-compact-up"></i>
+                                    <div class="votes">{{question.Votes}}</div>
+                                </div>
+                                <div class="col">
+                                    <div class="statement">
+                                        {{question.Statement}}
+                                    </div>
+                                    <div class="description">
+                                        {{question.Description}}
+                                    </div>
+                                    <div class="row details">
+                                        <div class="col-2">
+                                            <i class="bi bi-eye-fill view-icon"></i>
+                                            <span class="view">{{question.Views}} Views</span>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="answers-count">
+                                                {{question.AnswersCount}} Answers
+                                            </div>
+                                        </div>
+                                        <div class="col align-right">
+                                            <div class="resolved-text" *ngIf="question.IsResolved">
+                                                Resolved
+                                            </div>
+                                            <div class="time" *ngIf="!question.IsResolved">
+                                                {{timeDiff(question.QuestionedOn)}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 display-container">
+                    <div class="card display">
+                        <div *ngIf="id==null">
+                            No question selected
+                        </div>
+                        <div *ngIf="id!=null && SelectedQuestion">
+                            {{SelectedQuestion.Statement}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

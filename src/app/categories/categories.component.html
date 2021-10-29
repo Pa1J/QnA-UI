@@ -1,0 +1,61 @@
+<div class="row search-container">
+    
+    <div class="col-3 menu-item">
+        <div class="title">Categories</div>
+        <div class="row">
+            <div class="search-icon col-1">
+                <i class="bi bi-search"></i>
+            </div>
+            <input type="text" class="form-control textbox-search col"/>
+        </div>
+    </div>
+    
+    <div class="col-2 menu-item">
+        <div>Show</div>
+        <select class="form-control drop-down" >
+            <option *ngFor="let show of CategoryShowList" class="select-option">
+                {{show.Name}}
+            </option>
+        </select> 
+    </div>
+    
+    <div class="col-1 menu-item reset">
+        <i class="bi bi-arrow-clockwise"></i>
+        Reset
+    </div>
+
+    <div class="col-1 menu-item btn-menu">
+        <p class="btn btn-secondary btn-add">
+            +Category
+        </p>
+    </div>
+    
+</div>
+<div class="category-list" *ngIf="CategoriesList">
+    <div *ngIf="CategoriesList.length==0" class="container no-val-found"> 
+        No categories to display. <span class="link" [routerLink]="['/forum/categories/add']">Click here to add categories</span>
+    </div>
+    <div *ngIf="CategoriesList.length!=0">
+            <div *ngFor="let category of CategoriesList; index as i">
+                <div *ngIf="i%3==0" class="row grid-row">
+                        <div *ngFor="let j of [0,1,2]" class="col-4 category-container">
+                            <div *ngIf="CategoriesList[i+j]" class="card category-item">
+                                <div class="category-header row">
+                                    <span class="category-name col-8">
+                                        {{CategoriesList[i+j].Name}}
+                                    </span>
+                                    <span class="category-count col-4">
+                                        <span *ngIf="CategoryQuestionCount">({{CategoryQuestionCount[i+j].Count}})</span>
+                                    </span>
+                                </div>
+                                <div class="category-body">
+                                    <span class="category-desc">
+                                        {{CategoriesList[i+j].Description}}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div> 
+    </div>
+</div> 

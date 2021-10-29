@@ -1,0 +1,13 @@
+.content{
+    margin:0;
+    height: 100%;
+}
+.menu{
+    padding: 0;
+    color: white;
+    background-color: #3e4249;
+}
+.menu-content{
+    padding: 0;
+    background-color: #f8f8f9;
+}
